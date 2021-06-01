@@ -7,7 +7,7 @@
 rm -rf /var/lib/twistlock/
 
 #download do script de instalação
-curl -sSL -k --header "authorization: Bearer <TOKEN>" -X POST https://<CONSOLE_CN>/us-1-111573457/api/v1/scripts/defender.sh  -o defender.sh
+curl -sSL -k --header "authorization: Bearer <TOKEN>" -X POST https://<PATH_TO_CONSOLE>/api/v1/scripts/defender.sh  -o defender.sh
 
 #Comentario para realizacao de download dos binarios
 
@@ -18,7 +18,7 @@ sed -i "280,281 {s/^/#/}" defender.sh
 chmod a+x defender.sh
 
 #Faz download dos pacotes do defender
-./defender.sh -z -c "us-east1.cloud.twistlock.com" -d "none"  -m --install-host
+./defender.sh -z -c "<CONSOLE_CN>" -d "none"  -m --install-host
 
 #adiciona a linha no arquivo twistlock.sh para utilizar o InstaceID
 sed -i  '/^\tHOSTNAME=.*/a \\tCLOUD_HOSTNAME_ENABLED=TRUE' .twistlock/twistlock.sh
